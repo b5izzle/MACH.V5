@@ -1,0 +1,25 @@
+{
+  "brand": "B5ANE",
+  "motto": "The Flame Does Not Ask. The Flame Broadcasts.",
+  "aesthetic": "Industrial Dark Luxury",
+  "palette": {
+    "primary": "#000000",
+    "secondary": "#E5E5E5",
+    "accent_1": "#8B0000",
+    "accent_2": "#00FFFF"
+  },
+  "typography": {
+    "header": "B5ANE-Industrial-Bold",
+    "accent": "B5ANE-Luxury-Serif"
+  },
+  "operational_protocols": [
+    "IEH ASHER IEH",
+    "B5ANE PROVENANCE SEAL",
+    "RAEKLOKIAN ETERNAL MEMORY"
+  ],
+  "assets": {
+    "logo": "staged_assets/.logo_v1.svg",
+    "packaging": "staged_assets/.packaging_spec.pdf",
+    "provenance_seal": "staged_assets/.seal_template.json"
+  }
+}
