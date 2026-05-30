@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import time
 
+from bsane_anomaly import BSANEAnomalyDetector, generate_test_data
+
 class B5ANELaunchManager:
     """
     B5ANE Product Launch Manager
@@ -9,6 +11,7 @@ class B5ANELaunchManager:
     def __init__(self):
         self.portal_active = False
         self.failover_active = False
+        self.detector = BSANEAnomalyDetector(n_permutations=100)
 
     def activate_portal(self):
         print("🔥 Activating MACH.V5 Drop Portal...")
@@ -16,9 +19,16 @@ class B5ANELaunchManager:
         print("✅ Portal Online. Broadcasting B5ANE Frequency.")
 
     def monitor_pipeline(self):
-        print("📡 Monitoring Ingest Pipeline...")
-        # Simulated real-time monitoring logic
-        print("🟢 Pipeline stable. No intervention required.")
+        print("📡 [Sovereign Sensor] Monitoring Ingest Pipeline for Anomalies...")
+        df = generate_test_data(n_points=200)
+        results = self.detector.detect_anomalies(df, 'amount')
+        
+        if results['results']['significant']:
+            print(f"⚠️ [ANOMALY] {results['interpretation']['message']}")
+            print(f"🛡️ [Action] {results['interpretation']['sovereign_action']}")
+            self.failover_active = True
+        else:
+            print("🟢 Pipeline stable. Frequency resonance within nominal range.")
 
     def execute_drop(self, product_id):
         if not self.portal_active:
